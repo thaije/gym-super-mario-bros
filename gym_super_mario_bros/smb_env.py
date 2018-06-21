@@ -54,6 +54,8 @@ class SuperMarioBrosEnv(NESEnv):
             elif rom_mode == 'rectangle':
                 rom_name = 'roms/super-mario-bros-rect.nes'
             elif rom_mode == 'downsample':
+                rom_name = 'roms/super-mario-bros-downsampled_nobg.nes'
+            elif rom_mode == 'nobg':
                 rom_name = 'roms/super-mario-bros-downsampled.nes'
             else:
                 raise ValueError('invalid rom_mode: {}'.format(repr(rom_mode)))
@@ -62,19 +64,19 @@ class SuperMarioBrosEnv(NESEnv):
         # setup the discrete action space for the agent
         self.actions = [
             '',    # NOP
-            'U',   # Up
-            'D',   # Down
+            # 'U',   # Up
+            # 'D',   # Down
             'L',   # Left
             'R',   # Right
-            'LA',  # Left + A
-            'LB',  # Left + B
-            'LAB', # Left + A + B
-            'RA',  # Right + A
-            'RB',  # Right + B
-            'RAB', # Right + A + B
+            'LA',  # Left + A (jump)
+            'LB',  # Left + B (sprint)
+            'LAB', # Left + A + B (sprint + jump)
+            'RA',  # Right + A (jump)
+            'RB',  # Right + B (sprint)
+            'RAB', # Right + A + B (sprint + jump)
             'A',   # A
-            'B',   # B
-            'AB'   # A + B
+            # 'B',   # B
+            # 'AB'   # A + B
         ]
         self.action_space = spaces.Discrete(len(self.actions))
         # setup the environment variables for the target levels
@@ -94,8 +96,8 @@ class SuperMarioBrosEnv(NESEnv):
         # A mapping of pressed key combinations to discrete actions in action space
         keys_to_action = {
             (): 0,
-            (up, ): 1,
-            (down, ): 2,
+            # (up, ): 1,
+            # (down, ): 2,
             (left, ): 3,
             (right, ): 4,
             tuple(sorted((left, A, ))): 5,
@@ -105,8 +107,8 @@ class SuperMarioBrosEnv(NESEnv):
             tuple(sorted((right, B, ))): 9,
             tuple(sorted((right, A, B, ))): 10,
             (A, ): 11,
-            (B, ): 12,
-            tuple(sorted((A, B))): 13
+            # (B, ): 12,
+            # tuple(sorted((A, B))): 13
         }
 
         return keys_to_action

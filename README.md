@@ -148,3 +148,17 @@ Please cite `gym-super-mario-bros` if you use it in your research.
   howpublished = {\url{https://github.com/Kautenja/gym-super-mario-bros}},
 }
 ```
+
+
+# Changes from
+## actions
+- No Action
+- Left
+- Right
+- Left + A (jump)
+- Left + B (sprint)
+- Left + A + B (sprint + jump)
+- Right + A (jump)
+- Right + B (sprint)
+- Right + A + B (sprint + jump)
+- A (jump)

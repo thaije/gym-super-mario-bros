@@ -32,6 +32,7 @@ _register_mario_env('SuperMarioBros-v0', frame_skip=4)
 _register_mario_env('SuperMarioBros-v1', frame_skip=4, rom_mode='downsample')
 _register_mario_env('SuperMarioBros-v2', frame_skip=4, rom_mode='pixel')
 _register_mario_env('SuperMarioBros-v3', frame_skip=4, rom_mode='rectangle')
+_register_mario_env('SuperMarioBros-v4', frame_skip=4, rom_mode='nobg')
 
 
 # Super Mario Bros. with no frame skip
@@ -54,7 +55,7 @@ _register_mario_env('SuperMarioBros2NoFrameskip-v1', lost_levels=True, frame_ski
 # a template for making individual level environments
 id_template = 'SuperMarioBros{}-{}-{}-v{}'
 # iterate over all the rom modes, worlds (1-8), and levels (1-4)
-for version, rom_mode in enumerate([None, 'downsample', 'pixel', 'rectangle']):
+for version, rom_mode in enumerate([None, 'downsample', 'pixel', 'rectangle', 'nobg']):
     for world in range(1, 9):
         for level in range(1, 5):
             # setup the frame-skipping environment
